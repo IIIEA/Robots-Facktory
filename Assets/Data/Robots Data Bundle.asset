@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e931173bb36c571488e1a1fc8a1848a1, type: 3}
+  m_Name: Robots Data Bundle
+  m_EditorClassIdentifier: 
+  _robotsData:
+  - _lvl: 1
+    _sprite: {fileID: 0}
+  - _lvl: 2
+    _sprite: {fileID: 0}
+  - _lvl: 3
+    _sprite: {fileID: 0}
+  - _lvl: 4
+    _sprite: {fileID: 0}
+  - _lvl: 5
+    _sprite: {fileID: 0}
+  - _lvl: 6
+    _sprite: {fileID: 0}
+  - _lvl: 7
+    _sprite: {fileID: 0}
+  - _lvl: 8
+    _sprite: {fileID: 0}
+  - _lvl: 9
+    _sprite: {fileID: 0}
+  - _lvl: 10
+    _sprite: {fileID: 0}

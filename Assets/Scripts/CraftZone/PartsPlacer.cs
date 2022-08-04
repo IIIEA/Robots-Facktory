@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using System;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class PartsPlacer : MonoBehaviour
@@ -13,15 +14,11 @@ public class PartsPlacer : MonoBehaviour
     private List<DraggedObject> _draggedObjects = new List<DraggedObject>();
     private List<Vector2> _positions = new List<Vector2>();
 
+    public event Action CountPartsChanged;
 
     private void Awake()
     {
         CalculatePlaces();
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void OnDisable()
@@ -44,7 +41,9 @@ public class PartsPlacer : MonoBehaviour
         if(collision.TryGetComponent(out DraggedObject draggedObject))
         {
             if (_draggedObjects.Contains(draggedObject) == false)
+            {
                 _draggedObjects.Add(draggedObject);
+            }
 
             draggedObject.DragEnded += OnDragEnded;
             draggedObject.DragBegined += OnDragBegined;
@@ -60,13 +59,16 @@ public class PartsPlacer : MonoBehaviour
             draggedObject.DragBegined -= OnDragBegined;
 
             if (_draggedObjects.Contains(draggedObject))
+            {
                 _draggedObjects.Remove(draggedObject);
+            }
         }
     }
 
     private void OnDragEnded(DraggedObject draggedObject)
     {
         draggedObject.transform.SetParent(transform);
+        CountPartsChanged?.Invoke();
         CalculatePlaces();
         draggedObject.SetStandPosition(GetPlace());
         SnapObjectsToPlaces();
@@ -74,9 +76,9 @@ public class PartsPlacer : MonoBehaviour
 
     private void OnDragBegined(DraggedObject draggedObject)
     {
+        CountPartsChanged?.Invoke();
         CalculatePlaces();
         SnapObjectsToPlaces();
-        Debug.Log("Suk");
     }
 
     private Vector2 GetPlace()
@@ -96,7 +98,7 @@ public class PartsPlacer : MonoBehaviour
 
         for (int i = 0; i < positions.Length; i++)
         {
-            positions[i].transform.position = _positions[i];
+            positions[i].transform.DOMove(_positions[i], 0.2f);
         }
     }
 

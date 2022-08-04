@@ -8,4 +8,6 @@ public class RobotPart : MonoBehaviour
     [SerializeField] private int _lvl;
     [Min(0)]
     [SerializeField] private int _cost;
+
+    public int Lvl => _lvl;
 }
