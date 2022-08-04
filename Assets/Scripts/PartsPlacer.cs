@@ -8,12 +8,32 @@ public class PartsPlacer : MonoBehaviour
     [SerializeField] private Transform _startPlacePoint;
     [Range(1,4)]
     [SerializeField] private int _maxRobotsParts;
+    [SerializeField] private float _spacing;
 
     private List<DraggedObject> _draggedObjects = new List<DraggedObject>();
+    private List<Vector2> _positions = new List<Vector2>();
+
 
     private void Awake()
     {
-        SetPlaces();
+        CalculatePlaces();
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        if(_draggedObjects.Count != 0)
+        {
+            foreach (var draggedObject in _draggedObjects)
+            {
+                draggedObject.DragEnded -= OnDragEnded;
+                draggedObject.DragBegined -= OnDragBegined;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,9 +43,11 @@ public class PartsPlacer : MonoBehaviour
 
         if(collision.TryGetComponent(out DraggedObject draggedObject))
         {
-            draggedObject.SetStandPosition(GetPlace());
-            draggedObject.transform.SetParent(transform);
-            _draggedObjects.Add(draggedObject);
+            if (_draggedObjects.Contains(draggedObject) == false)
+                _draggedObjects.Add(draggedObject);
+
+            draggedObject.DragEnded += OnDragEnded;
+            draggedObject.DragBegined += OnDragBegined;
         }
     }
 
@@ -34,18 +56,81 @@ public class PartsPlacer : MonoBehaviour
         if (collision.TryGetComponent(out DraggedObject draggedObject))
         {
             draggedObject.ResetStandPosition();
+            draggedObject.DragEnded -= OnDragEnded;
+            draggedObject.DragBegined -= OnDragBegined;
+
             if (_draggedObjects.Contains(draggedObject))
                 _draggedObjects.Remove(draggedObject);
         }
     }
 
-    private Vector2 GetPlace()
+    private void OnDragEnded(DraggedObject draggedObject)
     {
-        return Vector2.zero;
+        draggedObject.transform.SetParent(transform);
+        CalculatePlaces();
+        draggedObject.SetStandPosition(GetPlace());
+        SnapObjectsToPlaces();
     }
 
-    private void SetPlaces()
+    private void OnDragBegined(DraggedObject draggedObject)
     {
+        CalculatePlaces();
+        SnapObjectsToPlaces();
+        Debug.Log("Suk");
+    }
 
+    private Vector2 GetPlace()
+    {
+        if (_positions.Count <= 0)
+            return _startPlacePoint.position;
+
+        return _positions[_positions.Count - 1];
+    }
+
+    private void SnapObjectsToPlaces()
+    {
+        var positions = GetComponentsInChildren<DraggedObject>();
+
+        if (positions.Length == 0)
+            return;
+
+        for (int i = 0; i < positions.Length; i++)
+        {
+            positions[i].transform.position = _positions[i];
+        }
+    }
+
+    private void CalculatePlaces()
+    {
+        _positions.Clear();
+
+        var positions = GetComponentsInChildren<DraggedObject>();
+       
+        if (positions.Length == 0)
+            return;
+
+        var firstPositionX = _startPlacePoint.position.x - _spacing * (positions.Length - 1) / 2;
+        _positions.Add(new Vector2(firstPositionX, _startPlacePoint.position.y));
+
+        if (positions.Length <= 1)
+            return;
+
+        for (int i = 1; i < positions.Length; i++)
+        {
+            _positions.Add(new Vector2(firstPositionX + _spacing * i, _startPlacePoint.position.y));
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+
+        if(_positions.Count != 0)
+        {
+            for (int i = 0; i < _positions.Count; i++)
+            {
+                Gizmos.DrawSphere(_positions[i], 0.2f);
+            }
+        }
     }
 }

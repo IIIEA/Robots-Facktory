@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Grabber : MonoBehaviour
@@ -26,24 +24,19 @@ public class Grabber : MonoBehaviour
                 if (hit.collider.TryGetComponent(out IDragged draggedObject))
                 {
                     _draggedObject = draggedObject;
+                    _draggedObject.BeginDrag(GetMousePosition());
                 }
-            }
-            else
-            {
-
             }
         }
         else if (_draggedObject != null && Input.GetMouseButtonUp(0)) 
         {
+            _draggedObject.EndDrag();
             _draggedObject = null;
         }
 
         if(_draggedObject != null)
         {
-            Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            Vector2 mouseWorldPosition = _main.ScreenToWorldPoint(mousePosition);
-
-            _draggedObject.Drag(mouseWorldPosition);
+            _draggedObject.Drag(GetMousePosition());
         }
     }
 
@@ -58,5 +51,13 @@ public class Grabber : MonoBehaviour
         RaycastHit2D hit2D = Physics2D.Raycast(worldMousePositionNear, worldMousePositionFar - worldMousePositionNear);
 
         return hit2D;
+    }
+
+    private Vector2 GetMousePosition()
+    {
+        Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector2 mouseWorldPosition = _main.ScreenToWorldPoint(mousePosition);
+
+        return mouseWorldPosition;
     }
 }
