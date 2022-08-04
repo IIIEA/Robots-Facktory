@@ -9,6 +9,8 @@ public class EffectsController : MonoBehaviour
 
     private DraggedObject _draggedObject;
 
+    private static readonly int PickUp = Animator.StringToHash("PickUp");
+
     private void Awake()
     {
         _draggedObject = GetComponent<DraggedObject>();
@@ -26,7 +28,7 @@ public class EffectsController : MonoBehaviour
 
     private void OnDragBegined(DraggedObject draggedObject)
     {
-        _animator.Play(Animations.PickUp.ToString());
+        _animator.SetTrigger(PickUp);
     }
 }
 
