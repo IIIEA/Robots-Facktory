@@ -11,6 +11,7 @@ public class Cursor : MonoBehaviour
 
     private void Awake()
     {
+        UnityEngine.Cursor.visible = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _mainCamera = Camera.main;
     }
