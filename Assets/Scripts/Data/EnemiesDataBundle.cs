@@ -19,8 +19,8 @@ public class EnemiesDataBundle : ScriptableObject
 public class EnemyData
 {
     [SerializeField] private int _lvl;
-    [SerializeField] private GameObject _enemyTemplate;
+    [SerializeField] private Enemy _enemyTemplate;
 
     public int Lvl => _lvl;
-    public GameObject EnemyTemplate => _enemyTemplate;
+    public Enemy EnemyTemplate => _enemyTemplate;
 }
