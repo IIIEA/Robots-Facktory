@@ -1,10 +1,12 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class CraftScreen : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite _defaultSprite;
+    [SerializeField] private Sprite _craftSprite;
     [SerializeField] private TMP_Text _lvlText;
     [SerializeField] private CraftTable _craftTable;
     [SerializeField] private RobotsDataBundle _dataBundle;
@@ -18,11 +20,13 @@ public class CraftScreen : MonoBehaviour
     private void OnEnable()
     {
         _craftTable.CraftLvlCalculated += OnCraftLvlCalculated;
+        _craftTable.CraftComplited += OnCraftComplited;
     }
 
     private void OnDisable()
     {
         _craftTable.CraftLvlCalculated -= OnCraftLvlCalculated;
+        _craftTable.CraftComplited -= OnCraftComplited;
     }
 
     private void OnCraftLvlCalculated(int lvl)
@@ -37,5 +41,12 @@ public class CraftScreen : MonoBehaviour
             _lvlText.text = "?";
             _spriteRenderer.sprite = _defaultSprite;
         }
+    }
+
+    private void OnCraftComplited()
+    {
+        _lvlText.text = "$";
+        _spriteRenderer.sprite = _craftSprite;
+        _spriteRenderer.transform.DOShakeRotation(1f);
     }
 }

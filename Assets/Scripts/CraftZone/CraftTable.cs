@@ -13,6 +13,7 @@ public class CraftTable : MonoBehaviour
 
     public event Action<bool> PartsOnTablceChanged;
     public event Action<int> CraftLvlCalculated;
+    public event Action CraftComplited;
 
     private void OnEnable()
     {
@@ -44,14 +45,25 @@ public class CraftTable : MonoBehaviour
         if (_partsToCraft.Length <= 0)
             return;
 
-
         foreach (var part in _partsToCraft)
         {
             Sequence sequence = DOTween.Sequence();
 
-            sequence.Append(part.transform.DOMoveY(_craftPosition.position.y, 0.3f).SetEase(Ease.InOutBack));
-            sequence.Append(part.transform.DOMoveX(_craftPosition.position.x, 0.3f).SetEase(Ease.InBack));
-            sequence.Append(part.transform.DOScale(0, 0.3f));
+            sequence.Append(part.transform.DOMoveY(_craftPosition.position.y, 0.3f).SetEase(Ease.OutBack, 6f));
+            sequence.Append(part.transform.DOMoveX(_craftPosition.position.x, 0.15f).SetEase(Ease.InBack));
+            sequence.Append(part.transform.DOScale(0, 0.15f));
+
+            StartCoroutine(DestroyPart(sequence, part.gameObject));
         }
+
+        CraftComplited?.Invoke();
+    }
+
+    private IEnumerator DestroyPart(Sequence sequence, GameObject gameObject)
+    {
+        yield return sequence.WaitForCompletion();
+
+        Destroy(gameObject);
     }
 }
+

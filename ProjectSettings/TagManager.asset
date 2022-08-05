@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - DraggedObject
-  - 
+  - Environment
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FirstPlan
+    uniqueID: 3500742577
+    locked: 0
+  - name: Cursor
+    uniqueID: 3710658395
     locked: 0
