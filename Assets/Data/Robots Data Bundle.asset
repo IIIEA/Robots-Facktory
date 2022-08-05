@@ -15,21 +15,31 @@ MonoBehaviour:
   _robotsData:
   - _lvl: 1
     _sprite: {fileID: -7533784964056760766, guid: e700f887b15b72a438d6f3d086f67145, type: 3}
+    _robotTemplate: {fileID: -6488195106577368361, guid: c87c51d006738d04096fe84988af0c77, type: 3}
   - _lvl: 2
     _sprite: {fileID: -7319895733314382418, guid: 8bc25a4eb767c4f40a772d8ded0e4817, type: 3}
+    _robotTemplate: {fileID: 2943751397192078357, guid: b97ffffd2bb7e5945a23222ad77eab5e, type: 3}
   - _lvl: 3
     _sprite: {fileID: -568633453821785692, guid: 9fd60c81b94dbb6489bacb03f3405666, type: 3}
+    _robotTemplate: {fileID: 9009196079889281594, guid: ff9baced79e9ee2429e2a7728203fcde, type: 3}
   - _lvl: 4
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
   - _lvl: 5
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
   - _lvl: 6
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
   - _lvl: 7
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
   - _lvl: 8
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
   - _lvl: 9
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
   - _lvl: 10
     _sprite: {fileID: 0}
+    _robotTemplate: {fileID: 0}
