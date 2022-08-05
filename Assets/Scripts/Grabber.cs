@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Grabber : MonoBehaviour
 {
+    [SerializeField] private LayerMask _draggedObjectsMask;
+
     private IDragged _draggedObject;
     private Camera _main;
 
@@ -47,8 +49,9 @@ public class Grabber : MonoBehaviour
 
         Vector3 worldMousePositionFar = _main.ScreenToWorldPoint(screenMousePositionFar);
         Vector3 worldMousePositionNear = _main.ScreenToWorldPoint(screenMousePositionNear);
+        float distance = (worldMousePositionFar - worldMousePositionNear).magnitude;
 
-        RaycastHit2D hit2D = Physics2D.Raycast(worldMousePositionNear, worldMousePositionFar - worldMousePositionNear);
+        RaycastHit2D hit2D = Physics2D.Raycast(worldMousePositionNear, worldMousePositionFar - worldMousePositionNear, distance, _draggedObjectsMask);
 
         return hit2D;
     }

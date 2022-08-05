@@ -7,6 +7,7 @@ public class CraftTable : MonoBehaviour
 {
     [SerializeField] private PartsPlacer _partsPlacer;
 
+    public event Action<bool> PartsOnTablceChanged;
     public event Action<int> CraftLvlCalculated;
 
     private void OnEnable()
@@ -30,5 +31,12 @@ public class CraftTable : MonoBehaviour
         }
 
         CraftLvlCalculated?.Invoke(lvl);
+        PartsOnTablceChanged?.Invoke(lvl != 0);
+
+    }
+
+    public void Craft()
+    {
+
     }
 }
