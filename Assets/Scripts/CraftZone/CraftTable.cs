@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class CraftTable : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CraftTable : MonoBehaviour
     public event Action<bool> PartsOnTablceChanged;
     public event Action<int> CraftLvlCalculated;
     public event Action CraftComplited;
+    public UnityEvent Craftted;
 
     private void OnEnable()
     {
@@ -28,6 +30,7 @@ public class CraftTable : MonoBehaviour
     private void OnPartsCountChanged()
     {
         _partsToCraft = GetComponentsInChildren<RobotPart>();
+
         int lvl = 0;
 
         for (int i = 0; i < _partsToCraft.Length; i++)
@@ -57,6 +60,7 @@ public class CraftTable : MonoBehaviour
         }
 
         CraftComplited?.Invoke();
+        Craftted?.Invoke();
     }
 
     private IEnumerator DestroyPart(Sequence sequence, GameObject gameObject)

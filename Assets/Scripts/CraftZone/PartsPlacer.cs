@@ -6,6 +6,7 @@ using System;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PartsPlacer : MonoBehaviour
 {
+    [SerializeField] private CraftTable _craftTable;
     [SerializeField] private Transform _startPlacePoint;
     [Range(1,4)]
     [SerializeField] private int _maxRobotsParts;
@@ -21,16 +22,16 @@ public class PartsPlacer : MonoBehaviour
         CalculatePlaces();
     }
 
+    private void OnEnable()
+    {
+        _craftTable.CraftComplited += OnCraftComplited;    
+    }
+
     private void OnDisable()
     {
-        if(_draggedObjects.Count != 0)
-        {
-            foreach (var draggedObject in _draggedObjects)
-            {
-                draggedObject.DragEnded -= OnDragEnded;
-                draggedObject.DragBegined -= OnDragBegined;
-            }
-        }
+        _craftTable.CraftComplited -= OnCraftComplited;
+
+        DisposeParts();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +62,32 @@ public class PartsPlacer : MonoBehaviour
             if (_draggedObjects.Contains(draggedObject))
             {
                 _draggedObjects.Remove(draggedObject);
+            }
+        }
+    }
+
+    private void OnCraftComplited()
+    {
+        if (_draggedObjects.Count != 0)
+        {
+            foreach (var draggedObject in _draggedObjects)
+            {
+                draggedObject.DragEnded -= OnDragEnded;
+                draggedObject.DragBegined -= OnDragBegined;
+            }
+        }
+
+        _draggedObjects.Clear();
+    }
+
+    private void DisposeParts()
+    {
+        if (_draggedObjects.Count != 0)
+        {
+            foreach (var draggedObject in _draggedObjects)
+            {
+                draggedObject.DragEnded -= OnDragEnded;
+                draggedObject.DragBegined -= OnDragBegined;
             }
         }
     }
