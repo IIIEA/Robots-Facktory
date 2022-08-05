@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class CraftButton : MonoBehaviour
 {
     [SerializeField] private CraftTable _craftTable;
+    [SerializeField] private AudioSource _audioSurce;
+    [SerializeField] private AudioClip _craftSound;
 
     private Button _button;
     private Image _image;
@@ -45,6 +47,7 @@ public class CraftButton : MonoBehaviour
 
     private void Craft()
     {
+        _audioSurce.PlayOneShot(_craftSound);
         _button.interactable = false;
         _image.color = Color.red;
     }

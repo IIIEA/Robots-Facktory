@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System;
+using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
 public class DraggedObject : MonoBehaviour, IDragged
@@ -12,6 +13,7 @@ public class DraggedObject : MonoBehaviour, IDragged
 
     public event Action<DraggedObject> DragBegined;
     public event Action<DraggedObject> DragEnded;
+    public event Action ObjectPlaced;
 
     public bool IsDragging => _isDragging;
 
@@ -43,11 +45,20 @@ public class DraggedObject : MonoBehaviour, IDragged
     {
         DragEnded?.Invoke(this);
 
-        transform.DOMove(_standPosition, 0.2f);
+        StartCoroutine(ReturnToPlace());
     }
 
     public void Drag(Vector2 position)
     {
         transform.position = position - _offset;
+    }
+
+    private IEnumerator ReturnToPlace()
+    {
+        var placeAnime = transform.DOMove(_standPosition, 0.2f);
+
+        yield return placeAnime.WaitForCompletion();
+
+        ObjectPlaced?.Invoke();
     }
 }
