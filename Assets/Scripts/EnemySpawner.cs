@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _positionToGo;
     [SerializeField] private EnemiesDataBundle _enemiesDataBundle;
     [Space]
+    [SerializeField] private float _awaitDelay;
     [SerializeField] private float _timeToReachPoint;
     [SerializeField] private float _spawnDelay;
 
@@ -27,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
                 try
                 {
                     var enemy = Instantiate(enemyData.EnemyTemplate, _spawnPoint.position, Quaternion.identity);
-                    enemy.Init(_positionToGo.position, _timeToReachPoint);
+                    enemy.Init(_positionToGo.position, _timeToReachPoint, enemyData.Lvl, _awaitDelay);
                     enemy.transform.localScale = Vector3.zero;
                     enemy.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack, 5f);
                 }

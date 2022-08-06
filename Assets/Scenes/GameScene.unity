@@ -489,6 +489,7 @@ MonoBehaviour:
   _spawnPoint: {fileID: 1800460653}
   _positionToGo: {fileID: 1844735586}
   _enemiesDataBundle: {fileID: 11400000, guid: 158f14c8a1d5ba248905701451452857, type: 2}
+  _awaitDelay: 1
   _timeToReachPoint: 10
   _spawnDelay: 5
 --- !u!1 &110802960

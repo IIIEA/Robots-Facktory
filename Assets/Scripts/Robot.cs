@@ -5,6 +5,6 @@ public class Robot : MonoBehaviour
 {
     public void Init(Vector2 positionToGo, float time)
     {
-        transform.DOMoveX(positionToGo.x, time).SetEase(Ease.Linear);
+        var a = transform.DOMoveX(positionToGo.x, time).SetEase(Ease.Linear);
     }
 }

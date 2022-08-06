@@ -32,14 +32,14 @@ MonoBehaviour:
     _sprite: {fileID: -572285823491918060, guid: 36b72cf87966a0e4a842771dbcd358d3, type: 3}
     _robotTemplate: {fileID: -347398848536927628, guid: fd8c0a5a756970b4c899ff5d911cfc8e, type: 3}
   - _lvl: 7
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: -7314384179796115231, guid: cd5386fd8a3a4bc439c6ab134b805e42, type: 3}
+    _robotTemplate: {fileID: 1285029782748083821, guid: dde6197f3564cb448a9bde1d8c71dd30, type: 3}
   - _lvl: 8
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: 3418586535715380105, guid: c4872fba4a8698240af1e4f66626fc16, type: 3}
+    _robotTemplate: {fileID: 2012830969108932511, guid: 86ff58b61f6f91847842bec1aa5ab388, type: 3}
   - _lvl: 9
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: 160874679506194329, guid: cef09d6b9c9d02746a3fe5760b8d60f5, type: 3}
+    _robotTemplate: {fileID: 670973675768817460, guid: 545c0c049b33e5e4e9a6342b9353cd56, type: 3}
   - _lvl: 10
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: -8896516369339704054, guid: 8054d89eb4053b943a542a92f8fd6bad, type: 3}
+    _robotTemplate: {fileID: 5461161033653376829, guid: 69dbbe724d7cb6144936f51875e55233, type: 3}
