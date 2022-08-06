@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
 public class CraftTable : MonoBehaviour
 {
+    [SerializeField] private Wallet _wallet;
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private PartsPlacer _partsPlacer;
     [SerializeField] private Transform _craftPosition;
@@ -45,8 +45,7 @@ public class CraftTable : MonoBehaviour
         }
 
         CraftLvlCalculated?.Invoke(lvl);
-        PartsOnTablceChanged?.Invoke(lvl != 0);
-
+        PartsOnTablceChanged?.Invoke(lvl != 0 && _wallet.Money >= lvl);
     }
 
     //Call with button event
@@ -69,6 +68,8 @@ public class CraftTable : MonoBehaviour
 
             StartCoroutine(DestroyPart(sequence, part.gameObject));
         }
+
+        _wallet.TrySpendMoney(lvl);
 
         StartCoroutine(SpawnRobot(lvl));
 

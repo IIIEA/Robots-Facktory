@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private AudioClip _punchAudio;
 
+    private Wallet _wallet;
     private BotHealth _bot;
     private AudioSource _audio;
     private int _damage;
@@ -35,8 +36,9 @@ public class Enemy : MonoBehaviour
         }    
     }
 
-    public void Init(Vector2 positionToGo, float time, int damage, float delay, BotHealth bot)
+    public void Init(Vector2 positionToGo, float time, int damage, float delay, BotHealth bot, Wallet wallet)
     {
+        _wallet = wallet;
         _bot = bot;
         _finishPosition = positionToGo;
         _damage = damage;
@@ -72,6 +74,8 @@ public class Enemy : MonoBehaviour
 
         yield return tween.WaitForCompletion();
 
+        _wallet.AddMoney(_damage);
+
         Died?.Invoke(this);
         Destroy(gameObject);
     }
@@ -84,6 +88,10 @@ public class Enemy : MonoBehaviour
         if (damage < _damage)
         {
             SetDamage(damage);
+        }
+        else
+        {
+            _wallet.AddMoney(_damage);
         }
 
         yield return tween.WaitForCompletion();

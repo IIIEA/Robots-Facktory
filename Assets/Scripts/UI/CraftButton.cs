@@ -21,17 +21,17 @@ public class CraftButton : MonoBehaviour
 
     private void OnEnable()
     {
-        _craftTable.PartsOnTablceChanged += OnCraftRead;
+        _craftTable.PartsOnTablceChanged += OnCraftReady;
         _button.onClick.AddListener(Craft);
     }
 
     private void OnDisable()
     {
-        _craftTable.PartsOnTablceChanged -= OnCraftRead;
+        _craftTable.PartsOnTablceChanged -= OnCraftReady;
         _button.onClick.RemoveListener(Craft);
     }
 
-    private void OnCraftRead(bool isReady)
+    private void OnCraftReady(bool isReady)
     {
         _button.interactable = isReady;
 
