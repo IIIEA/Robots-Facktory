@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IdleEnemy6
+  m_Name: IdleRobot5
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 412626389790913813, guid: cc1e86e9c5aae1f47ada9165308db1e3, type: 3}
+      value: {fileID: 4220559266199256303, guid: b9cb146ec29046b488de9ac7cbfc7760, type: 3}
     - time: 0.5
-      value: {fileID: 1940632880100519677, guid: cc1e86e9c5aae1f47ada9165308db1e3, type: 3}
+      value: {fileID: -4277558877328264916, guid: b9cb146ec29046b488de9ac7cbfc7760, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 412626389790913813, guid: cc1e86e9c5aae1f47ada9165308db1e3, type: 3}
-    - {fileID: 1940632880100519677, guid: cc1e86e9c5aae1f47ada9165308db1e3, type: 3}
+    - {fileID: 4220559266199256303, guid: b9cb146ec29046b488de9ac7cbfc7760, type: 3}
+    - {fileID: -4277558877328264916, guid: b9cb146ec29046b488de9ac7cbfc7760, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

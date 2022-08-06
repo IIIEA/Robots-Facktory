@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: be3725cd17d23f1438af38df95b3e322
+guid: 0ee10cf4096e57f489e9a1715b03f666
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4220559266199256303
-    second: robot_5_0
+      213: 4732147558941839881
+    second: robot_4_0
   - first:
-      213: -4277558877328264916
-    second: robot_5_1
+      213: -6688784870167932148
+    second: robot_4_1
+  - first:
+      213: 1099029243137500606
+    second: robot_4 1_0
+  - first:
+      213: -5736612381727903829
+    second: robot_4 1_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,43 +151,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: robot_5_0
+      name: robot_4 1_0
       rect:
         serializedVersion: 2
         x: 2
         y: 0
         width: 81
         height: 81
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fec3a478a40729a30800000000000000
-      internalID: 4220559266199256303
+      spriteID: eb52af21649804f00800000000000000
+      internalID: 1099029243137500606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: robot_5_1
+      name: robot_4 1_1
       rect:
         serializedVersion: 2
         x: 87
         y: 0
         width: 81
-        height: 81
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c21b7035dde03a4c0800000000000000
-      internalID: -4277558877328264916
+      spriteID: baf2005ce657360b0800000000000000
+      internalID: -5736612381727903829
       vertices: []
       indices: 
       edges: []

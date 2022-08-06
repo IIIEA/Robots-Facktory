@@ -23,14 +23,14 @@ MonoBehaviour:
     _sprite: {fileID: -568633453821785692, guid: 9fd60c81b94dbb6489bacb03f3405666, type: 3}
     _robotTemplate: {fileID: 9009196079889281594, guid: ff9baced79e9ee2429e2a7728203fcde, type: 3}
   - _lvl: 4
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: -5736612381727903829, guid: 0ee10cf4096e57f489e9a1715b03f666, type: 3}
+    _robotTemplate: {fileID: -4853092200902291515, guid: 19f3593efdec2a844bcbe87683b1113b, type: 3}
   - _lvl: 5
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: 3427506456019725010, guid: 49c1d8c1a21d146449dd2429d3982bf7, type: 3}
+    _robotTemplate: {fileID: -4674683730802202714, guid: 8abdcb3502bf9cd4fb246df5c44665c7, type: 3}
   - _lvl: 6
-    _sprite: {fileID: 0}
-    _robotTemplate: {fileID: 0}
+    _sprite: {fileID: -572285823491918060, guid: 36b72cf87966a0e4a842771dbcd358d3, type: 3}
+    _robotTemplate: {fileID: -347398848536927628, guid: fd8c0a5a756970b4c899ff5d911cfc8e, type: 3}
   - _lvl: 7
     _sprite: {fileID: 0}
     _robotTemplate: {fileID: 0}
