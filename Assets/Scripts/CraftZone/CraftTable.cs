@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class CraftTable : MonoBehaviour
 {
+    [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private PartsPlacer _partsPlacer;
     [SerializeField] private Transform _craftPosition;
     [SerializeField] private Transform _robotSpawnPoint;
@@ -84,7 +85,7 @@ public class CraftTable : MonoBehaviour
             try
             {
                 var robot = Instantiate(robotData.RobotTemplate, _robotSpawnPoint.position, Quaternion.identity);
-                robot.Init(_lastCraftedRobot, _positionToGo.position, _timeToReachPosition);
+                robot.Init(_lastCraftedRobot, _positionToGo.position, _timeToReachPosition, robotData.Lvl, _enemySpawner);
                 robot.transform.localScale = Vector3.zero;
                 robot.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack, 5f);
                 _lastCraftedRobot = robot;

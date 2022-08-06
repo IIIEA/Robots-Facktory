@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _timeToReachPoint;
     [SerializeField] private float _spawnDelay;
 
+    private List<Enemy> _enemies = new List<Enemy>();
     private float _timer = 0;
 
     private void Update()
@@ -31,6 +32,9 @@ public class EnemySpawner : MonoBehaviour
                     enemy.Init(_positionToGo.position, _timeToReachPoint, enemyData.Lvl, _awaitDelay);
                     enemy.transform.localScale = Vector3.zero;
                     enemy.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack, 5f);
+
+                    _enemies.Add(enemy);
+                    enemy.Died += OnEnemyDied;
                 }
                 catch (System.Exception e)
                 {
@@ -38,5 +42,34 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var enemy in _enemies)
+        {
+            if (enemy != null)
+                enemy.Died -= OnEnemyDied;
+        }
+    }
+
+    public bool TryGetEnemy(out Enemy enemy)
+    {
+        Debug.Log("try get enemy");
+        if (_enemies.Count > 0)
+        {
+            enemy = _enemies[0];
+
+            return _enemies[0] != null && enemy.TargetReached == true;
+        }
+
+        enemy = null;
+
+        return false;
+    }
+
+    public void OnEnemyDied(Enemy enemy)
+    {
+        _enemies.Remove(enemy);
     }
 }

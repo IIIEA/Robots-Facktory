@@ -2,13 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private AudioClip _punchAudio;
+
+    private AudioSource _audio;
     private int _damage;
     private Vector2 _finishPosition;
     private bool _targetReached;
     private WaitForSeconds _delay;
+    private bool _canAttack = true;
+
+    public bool TargetReached => _targetReached;
+
+    public event Action<Enemy> Died;
+
+    private void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -30,23 +45,47 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        transform.DOShakeScale(0.1f);
-
-        if (damage < _damage)
-        {
-            Attack();
-        }
+        StartCoroutine(TakeDamageRoutine(damage));
     }
+
+    private void SetDamage()
+    {
+
+    }
+
 
     private IEnumerator AttackWaiter()
     {
         yield return _delay;
 
-        Attack();
+        if (_canAttack)
+            StartCoroutine(AttackRoutine());
     }
 
-    private void Attack()
+    private IEnumerator AttackRoutine()
     {
-        transform.DOShakeScale(0.1f);
+        var tween = transform.DOShakeScale(0.1f);
+        _audio.PlayOneShot(_punchAudio);
+
+        yield return tween.WaitForCompletion();
+
+        Died?.Invoke(this);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator TakeDamageRoutine(int damage)
+    {
+        var tween = transform.DOShakeScale(0.1f);
+        _canAttack = false;
+
+        if (damage < _damage)
+        {
+            SetDamage();
+        }
+
+        yield return tween.WaitForCompletion();
+
+        Died?.Invoke(this);
+        Destroy(gameObject);
     }
 }
