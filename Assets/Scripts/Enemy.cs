@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private AudioClip _punchAudio;
 
+    private BotHealth _bot;
     private AudioSource _audio;
     private int _damage;
     private Vector2 _finishPosition;
@@ -34,8 +35,9 @@ public class Enemy : MonoBehaviour
         }    
     }
 
-    public void Init(Vector2 positionToGo, float time, int damage, float delay)
+    public void Init(Vector2 positionToGo, float time, int damage, float delay, BotHealth bot)
     {
+        _bot = bot;
         _finishPosition = positionToGo;
         _damage = damage;
         _delay = new WaitForSeconds(delay);
@@ -48,9 +50,9 @@ public class Enemy : MonoBehaviour
         StartCoroutine(TakeDamageRoutine(damage));
     }
 
-    private void SetDamage()
+    private void SetDamage(int damage)
     {
-
+        _bot.TakeDamage(damage);
     }
 
 
@@ -66,6 +68,7 @@ public class Enemy : MonoBehaviour
     {
         var tween = transform.DOShakeScale(0.1f);
         _audio.PlayOneShot(_punchAudio);
+        _bot.TakeDamage(_damage);
 
         yield return tween.WaitForCompletion();
 
@@ -80,7 +83,7 @@ public class Enemy : MonoBehaviour
 
         if (damage < _damage)
         {
-            SetDamage();
+            SetDamage(damage);
         }
 
         yield return tween.WaitForCompletion();

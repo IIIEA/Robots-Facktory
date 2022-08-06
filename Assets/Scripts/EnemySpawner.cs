@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _positionToGo;
     [SerializeField] private EnemiesDataBundle _enemiesDataBundle;
+    [SerializeField] private BotHealth _bot;
     [Space]
     [SerializeField] private float _awaitDelay;
     [SerializeField] private float _timeToReachPoint;
@@ -29,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
                 try
                 {
                     var enemy = Instantiate(enemyData.EnemyTemplate, _spawnPoint.position, Quaternion.identity);
-                    enemy.Init(_positionToGo.position, _timeToReachPoint, enemyData.Lvl, _awaitDelay);
+                    enemy.Init(_positionToGo.position, _timeToReachPoint, enemyData.Lvl, _awaitDelay, _bot);
                     enemy.transform.localScale = Vector3.zero;
                     enemy.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack, 5f);
 
@@ -55,7 +56,6 @@ public class EnemySpawner : MonoBehaviour
 
     public bool TryGetEnemy(out Enemy enemy)
     {
-        Debug.Log("try get enemy");
         if (_enemies.Count > 0)
         {
             enemy = _enemies[0];
