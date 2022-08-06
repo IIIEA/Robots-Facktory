@@ -15,6 +15,7 @@ public class CraftTable : MonoBehaviour
     [SerializeField] private RobotsDataBundle _robotsDataBundle;
 
     private RobotPart[] _partsToCraft;
+    private Robot _lastCraftedRobot = null;
 
     public event Action<bool> PartsOnTablceChanged;
     public event Action<int> CraftLvlCalculated;
@@ -83,9 +84,10 @@ public class CraftTable : MonoBehaviour
             try
             {
                 var robot = Instantiate(robotData.RobotTemplate, _robotSpawnPoint.position, Quaternion.identity);
-                robot.Init(_positionToGo.position, _timeToReachPosition);
+                robot.Init(_lastCraftedRobot, _positionToGo.position, _timeToReachPosition);
                 robot.transform.localScale = Vector3.zero;
                 robot.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack, 5f);
+                _lastCraftedRobot = robot;
             }
             catch (Exception e)
             {
