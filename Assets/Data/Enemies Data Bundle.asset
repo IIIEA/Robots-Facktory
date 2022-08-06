@@ -20,16 +20,16 @@ MonoBehaviour:
   - _lvl: 3
     _enemyTemplate: {fileID: 1578658612073359081, guid: c6a1f2fbef676ae44b5461c953c3c880, type: 3}
   - _lvl: 4
-    _enemyTemplate: {fileID: -5399515619241406686, guid: 19f3593efdec2a844bcbe87683b1113b, type: 3}
+    _enemyTemplate: {fileID: 4947574686949572253, guid: cbfecd728ef088443b7dc28a4036d937, type: 3}
   - _lvl: 5
-    _enemyTemplate: {fileID: -2312841285547768646, guid: 8abdcb3502bf9cd4fb246df5c44665c7, type: 3}
+    _enemyTemplate: {fileID: 8666155823463939412, guid: 7bb5e36ee63475a4494bb86ffa78af2c, type: 3}
   - _lvl: 6
-    _enemyTemplate: {fileID: -2646345248490468548, guid: fd8c0a5a756970b4c899ff5d911cfc8e, type: 3}
+    _enemyTemplate: {fileID: 2465864476890208121, guid: 4dc88bf7b48147941b9f07044fa64ca0, type: 3}
   - _lvl: 7
-    _enemyTemplate: {fileID: 0}
+    _enemyTemplate: {fileID: 8050251821996031884, guid: 16380b275d2ffa947b8adb617db9936a, type: 3}
   - _lvl: 8
-    _enemyTemplate: {fileID: 0}
+    _enemyTemplate: {fileID: 1049753704554580369, guid: 00943b1d493e60343bc7b8327a049e0d, type: 3}
   - _lvl: 9
-    _enemyTemplate: {fileID: 0}
+    _enemyTemplate: {fileID: 6364746451436160847, guid: 098a3520994a3724d9bf3f5adfb6759b, type: 3}
   - _lvl: 10
-    _enemyTemplate: {fileID: 0}
+    _enemyTemplate: {fileID: 2852324517264920820, guid: 5627291c7afc7a9458aace1f35b1ffcd, type: 3}
