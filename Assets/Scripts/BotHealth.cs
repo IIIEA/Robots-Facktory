@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BotHealth : MonoBehaviour
 {
     [SerializeField] private int _health;
 
     public event Action<int> HealthChanged;
-    public event Action Dead;
+    public UnityEvent Dead;
 
     private void Start()
     {
