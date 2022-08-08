@@ -18,6 +18,8 @@ public class Cursor : MonoBehaviour
 
     private void Update()
     {
+        UnityEngine.Cursor.visible = false;
+
         Vector2 cursorPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorPosition;
 

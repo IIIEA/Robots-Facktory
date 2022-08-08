@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class MoneyRepresentor : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MoneyRepresentor : MonoBehaviour
 
     private void OnMoneyChanged(int helath)
     {
+        _text.transform.DOShakeScale(0.2f, 0.5f);
         _text.text = helath.ToString() + " $";
     }
 }

@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class CraftScreen : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CraftScreen : MonoBehaviour
     [SerializeField] private TMP_Text _lvlText;
     [SerializeField] private CraftTable _craftTable;
     [SerializeField] private RobotsDataBundle _dataBundle;
+
+    public event Action CraftComplited;
 
     private void Start()
     {
@@ -48,5 +51,7 @@ public class CraftScreen : MonoBehaviour
         _lvlText.text = "$";
         _spriteRenderer.sprite = _craftSprite;
         _spriteRenderer.transform.DOShakeRotation(1f);
+
+        CraftComplited?.Invoke();
     }
 }

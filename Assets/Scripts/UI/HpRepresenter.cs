@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class HpRepresenter : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class HpRepresenter : MonoBehaviour
 
     private void OnHealthChanged(int helath)
     {
+        _text.transform.DOShakeScale(0.2f, 0.5f);
         _text.text = helath.ToString();
     }
 }
