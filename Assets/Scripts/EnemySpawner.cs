@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         {
             _timer = 0;
 
-            if(_enemiesDataBundle.TryGetRobotByLvl(Random.Range(1,10), out EnemyData enemyData))
+            if(_enemiesDataBundle.TryGetRobotByLvl(Random.Range(1,11), out EnemyData enemyData))
             {
                 try
                 {
